@@ -51,6 +51,32 @@ app.get('/news', (req, res) => {
     res.json(articles)
 })
 
+app.get('/news/:newspaperId', async (req, res) => {
+    console.log(req.params.newspaperId)
+    const  newspaperId = (req.params.newspaperId)
 
+    const newspaperAddress = newspapers.filter(newspaper => newspaper.name == newspaperId)[0].address
+    const newspaperBase = newspapers.filter(newspaper => newspaper.name == newspaperId)[0].base
+
+    console.log(newspaperAddress)
+
+    axios.get(newspaperAddress)
+         .then((response) => {
+            const html = response.data;
+            const $ = cheerio.load(html);
+            const specificArticles =[]
+
+            $('a:contains("climate")').each(function () {
+                const title = $(this).text()
+                const url = $(this).attr('href')
+                specificArticles.push({
+                    title, 
+                    url: newspaperBase + url,
+                    source: newspaperId
+                })
+            })
+            res.json(specificArticles)
+         })
+})
 
 app.listen(PORT, () => console.log(`server running on port ${PORT}`))
