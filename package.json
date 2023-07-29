@@ -13,9 +13,8 @@
     "axios": "^1.4.0",
     "cheerio": "^1.0.0-rc.12",
     "express": "^4.18.2",
-    "resolve": "^1.22.2"
-  },
-  "devDependencies": {
+    "resolve": "^1.22.2",
     "nodemon": "^3.0.1"
+
   }
 }
