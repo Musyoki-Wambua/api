@@ -47,6 +47,8 @@ To run the Climate Change News API, execute the following command in the termina
 
 The API will start running on the specified PORT, and you can access it using the base URL.
 
+You can also [click here](https://climateapi-a4e18d42a4a2.herokuapp.com/news) to launch the live link
+
 ## ENDPOINTS
 
 - GET /news:
@@ -55,7 +57,7 @@ The API will start running on the specified PORT, and you can access it using th
 
 - GET /news/:newspaperId:
 
-- You can also [click here](https://climateapi-a4e18d42a4a2.herokuapp.com/news) to launch the live link
+Retrieves news articles related to climate change from a specific newspaper.
 
 ## AUTHOR
 
