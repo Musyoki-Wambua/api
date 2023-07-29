@@ -59,6 +59,10 @@ You can also [click here](https://climateapi-a4e18d42a4a2.herokuapp.com/news) to
 
 Retrieves news articles related to climate change from a specific newspaper.
 
+For example: 
+
+        base URl/news/guardian:        
+
 ## AUTHOR
 
 The Climate Change News API was developed by [Joseph Wambua](https://github.com/Musyoki-Wambua).
