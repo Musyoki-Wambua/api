@@ -1,4 +1,4 @@
-const PORT = 8000
+const PORT = process.env.PORT || 8000
 const express = require("express")
 const axios = require('axios')
 const cheerio = require('cheerio')
@@ -7,19 +7,64 @@ const app = express(); //Create an instance of the app
 
 const newspapers = [
     {
+        name: 'cityam',
+        address: 'https://www.cityam.com/topic/climate-change/',
+        base: ''
+    },
+    {
         name: 'thetimes',
         address: 'https://www.thetimes.co.uk/environment/climate-change',
-        base: ""
+        base: ''
     },
     {
         name: 'guardian',
-        address: 'https://www.theguardian.com/environment/climate-crisis/all',
-        base: ''
-    }, 
+        address: 'https://www.theguardian.com/environment/climate-crisis',
+        base: '',
+    },
     {
         name: 'telegraph',
         address: 'https://www.telegraph.co.uk/climate-change',
-        base: "https://www.telegraph.co.uk"
+        base: 'https://www.telegraph.co.uk',
+    },
+    {
+        name: 'nyt',
+        address: 'https://www.nytimes.com/international/section/climate',
+        base: '',
+    },
+    {
+        name: 'latimes',
+        address: 'https://www.latimes.com/environment',
+        base: '',
+    },
+    {
+        name: 'smh',
+        address: 'https://www.smh.com.au/environment/climate-change',
+        base: 'https://www.smh.com.au', 
+    },
+    {
+        name: 'bbc',
+        address: 'https://www.bbc.co.uk/news/science_and_environment',
+        base: 'https://www.bbc.co.uk',
+    },
+    {
+        name: 'es',
+        address: 'https://www.standard.co.uk/topic/climate-change',
+        base: 'https://www.standard.co.uk'
+    },
+    {
+        name: 'sun',
+        address: 'https://www.thesun.co.uk/topic/climate-change-environment/',
+        base: ''
+    },
+    {
+        name: 'dm',
+        address: 'https://www.dailymail.co.uk/news/climate_change_global_warming/index.html',
+        base: ''
+    },
+    {
+        name: 'nyp',
+        address: 'https://nypost.com/tag/climate-change/',
+        base: ''
     }
 ]
 
@@ -51,7 +96,7 @@ app.get('/news', (req, res) => {
     res.json(articles)
 })
 
-app.get('/news/:newspaperId', async (req, res) => {
+app.get('/news/:newspaperId',(req, res) => {
     console.log(req.params.newspaperId)
     const  newspaperId = (req.params.newspaperId)
 
@@ -76,6 +121,9 @@ app.get('/news/:newspaperId', async (req, res) => {
                 })
             })
             res.json(specificArticles)
+         })
+         .catch((errors) => {
+            console.log(errors)
          })
 })
 
